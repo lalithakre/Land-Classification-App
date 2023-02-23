@@ -47,7 +47,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black45,
-        title: Text('ML Classifier'),
+        title: Center(child: Text('ML Classifier')),
       ),
       body: Container(
         height: h,
@@ -106,13 +106,19 @@ class _HomeState extends State<Home> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10))),
           ),
+          SizedBox(
+            height: 10,
+          ),
           _loading == false
               ? Container(
-                  height: 200,
-                  width: 200,
+                  height: 250,
+                  width: 250,
+                  color: Colors.red,
                   child: Image.file(_image!),
                 )
-              : Container()
+              : Container(
+                  child: Text(""),
+                )
         ]),
       ),
     );
