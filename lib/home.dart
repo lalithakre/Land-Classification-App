@@ -117,7 +117,7 @@ class _HomeState extends State<Home> {
                   child: Image.file(_image!),
                 )
               : Container(
-                  child: Text(""),
+                  child: Text("Output"),
                 )
         ]),
       ),
