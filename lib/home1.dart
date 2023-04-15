@@ -1,13 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-// import 'package:my_first_app/main.dart';
 import 'package:tflite/tflite.dart';
-// import 'package:tflite_flutter/tflite_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 
 class Home1 extends StatefulWidget {
   const Home1({super.key});
-
   @override
   State<Home1> createState() => _Home1State();
 }
