@@ -36,6 +36,7 @@ class _HomeState extends State<Home> {
         _loading = false;
       });
       _image = File(image.path);
+      classifyImage(_image!);
     }
   }
 
@@ -48,6 +49,7 @@ class _HomeState extends State<Home> {
         _loading = false;
       });
       _image = File(image.path);
+      classifyImage(_image!);
     }
   }
 
@@ -127,9 +129,21 @@ class _HomeState extends State<Home> {
                     SizedBox(
                       height: 10,
                     ),
-                    Container(
-                      child: Text("Result"),
+                    _image != null
+                        ? Container(
+                            height: 200,
+                            width: 200,
+                            child: Image.file(_image!),
+                          )
+                        : Container(),
+                    SizedBox(
+                      height: 8,
                     ),
+                    _image != null
+                        ? Container(
+                            child: Text("Result"),
+                          )
+                        : Container(),
                     _outputs != null
                         ? Text(
                             "${_outputs![0]["label"]}",
