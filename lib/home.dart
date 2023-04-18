@@ -127,6 +127,9 @@ class _HomeState extends State<Home> {
                     SizedBox(
                       height: 10,
                     ),
+                    Container(
+                      child: Text("Result"),
+                    ),
                     _outputs != null
                         ? Text(
                             "${_outputs![0]["label"]}",
