@@ -15,7 +15,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   List? _outputs;
   File? _image;
-  bool _loading = false;
+  bool _loading = true;
   @override
   void initState() {
     super.initState();
@@ -31,26 +31,24 @@ class _HomeState extends State<Home> {
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (image == null) {
       return null;
-    } else {
-      setState(() {
-        _loading = false;
-      });
-      _image = File(image.path);
-      classifyImage(_image!);
     }
+    setState(() {
+      _image = File(image.path);
+      _loading = false;
+    });
+    classifyImage(_image!);
   }
 
   _loadimage_camera() async {
     final image = await ImagePicker().pickImage(source: ImageSource.camera);
     if (image == null) {
       return null;
-    } else {
-      setState(() {
-        _loading = false;
-      });
-      _image = File(image.path);
-      classifyImage(_image!);
     }
+    setState(() {
+      _image = File(image.path);
+      _loading = false;
+    });
+    classifyImage(_image!);
   }
 
   @override
@@ -146,9 +144,9 @@ class _HomeState extends State<Home> {
                         : Container(),
                     _outputs != null
                         ? Text(
-                            "${_outputs![0]["label"]}",
+                            "${_outputs![0]["label"]}!",
                             style: TextStyle(
-                              color: Colors.black,
+                              color: Colors.pinkAccent,
                               fontSize: 20.0,
                               background: Paint()..color = Colors.white,
                             ),
@@ -162,7 +160,7 @@ class _HomeState extends State<Home> {
   classifyImage(File image) async {
     var output = await Tflite.runModelOnImage(
       path: image.path,
-      numResults: 2,
+      numResults: 10,
       threshold: 0.5,
       imageMean: 127.5,
       imageStd: 127.5,
